@@ -65,7 +65,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.56494, 0, 0.169156)]
+"values": [Vector3(0.56494, 0, -0.57502)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -113,7 +113,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.59482, -0.45481, 0.55997)]
+"values": [Vector3(-0.59482, -0.45481, 0.0387962)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -166,11 +166,11 @@ shape = SubResource("CapsuleShape3D_rwgxs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6391, -0.541128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6391, -0.00107768)
 cull_mask = 1048063
 
 [node name="Right Hand" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(0.130282, 0.335663, -0.155361, 0.0819065, 0.153621, 0.274774, 0.113292, -0.497063, -0.0199929, 0.56494, 0, 0.169156)
+transform = Transform3D(0.130282, 0.335663, -0.155361, 0.0819065, 0.153621, 0.274774, 0.113292, -0.497063, -0.0199929, 0.56494, 0, -0.57502)
 mesh = SubResource("CapsuleMesh_dqkch")
 skeleton = NodePath("../..")
 
@@ -189,7 +189,7 @@ transform = Transform3D(-0.0087266, -0.999962, 1.19209e-07, 0.999962, -0.0087265
 shape = SubResource("CapsuleShape3D_g2els")
 
 [node name="Left Hand" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(0.16662, -0.0991944, -0.146341, -0.0141317, -0.605031, 0.0629446, -0.0924933, -0.0862515, -0.273239, -0.59482, -0.45481, 0.55997)
+transform = Transform3D(0.16662, -0.0991945, -0.146341, -0.0141317, -0.605031, 0.0629446, -0.0924933, -0.0862515, -0.273239, -0.59482, -0.45481, 0.0387962)
 mesh = SubResource("CapsuleMesh_dqkch")
 skeleton = NodePath("../..")
 
