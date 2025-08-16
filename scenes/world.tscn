@@ -1,0 +1,170 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccmsp7w6f833i"]
+
+[ext_resource type="Script" uid="uid://bknb3mhapw7pi" path="res://scripts/world.gd" id="1_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://q0srt58poiev" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://drpfbvemhhrno" path="res://scenes/test_dummy.tscn" id="2_rwgxs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5uuo"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_nnsk1"]
+sky_material = SubResource("ProceduralSkyMaterial_e5uuo")
+
+[sub_resource type="Environment" id="Environment_rwgxs"]
+background_mode = 2
+sky = SubResource("Sky_nnsk1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_rwgxs"]
+offsets = PackedFloat32Array(0.0298507, 0.522388, 1)
+colors = PackedColorArray(0, 0.61389, 0.604638, 1, 0.94902, 0, 0, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4wyf3"]
+gradient = SubResource("Gradient_rwgxs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0juu"]
+albedo_color = Color(0, 1, 1, 1)
+metallic = 1.0
+backlight_enabled = true
+backlight = Color(1, 0, 0, 1)
+detail_enabled = true
+detail_mask = SubResource("GradientTexture1D_4wyf3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71j4m"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfnet"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_i7141"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4mrxx"]
+gradient = SubResource("Gradient_i7141")
+fill_from = Vector2(0.429293, 0.50505)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7r4gi"]
+albedo_color = Color(1, 0, 1, 1)
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_4mrxx")
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_4wyf3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rwgxs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0.321294, -0.0988342, 0.941807, -0.383106, 0.895954, 0.224717, 0, 0, 0)
+shadow_enabled = true
+
+[node name="terrain" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294525, 67.433, 0)
+use_collision = true
+size = Vector3(102.094, 1, 132.312)
+material = SubResource("StandardMaterial3D_k0juu")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="terrain/CSGBox3D"]
+transform = Transform3D(35.165, 0, 0, 0, 35.165, 0, 0, 0, 35.165, -0.294525, 2.34015, 0)
+material_override = SubResource("StandardMaterial3D_71j4m")
+operation = 2
+use_collision = true
+material = SubResource("StandardMaterial3D_qfnet")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 77.41, 0, 0, 0, 77.41, 0, -33.1487, 0)
+use_collision = true
+size = Vector3(6.20703, 0.143555, 6.22168)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 77.41, 0, 0, 0, 77.41, -168.009, -24.8911, -5.87756)
+use_collision = true
+size = Vector3(1.88135, 0.0595705, 6.33032)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -175.908, -21.1342, 180.406)
+use_collision = true
+size = Vector3(0.40332, 0.0723572, 0.33313)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -155.861, -19.1517, 148.545)
+use_collision = true
+size = Vector3(0.40332, 0.155846, 0.33313)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -170.955, -17.7457, 108.605)
+use_collision = true
+size = Vector3(0.40332, 0.259319, 0.33313)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -196.411, -16.3311, 67.6757)
+use_collision = true
+size = Vector3(0.40332, 0.318889, 0.33313)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="Player" parent="." node_paths=PackedStringArray("world") instance=ExtResource("1_nnsk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.67874, 92.1397, -26.2449)
+throw_speed = 120.0
+world = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Enemy count" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -951.0
+offset_top = -37.0
+offset_right = -842.0
+offset_bottom = 224.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 191
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 681.0
+offset_top = -37.0
+offset_right = 790.0
+offset_bottom = 224.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 191
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Timer"]
+wait_time = 60.0
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Test Dummy" parent="Enemies" instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.547, -16.264, 171.849)
+
+[node name="Test Dummy2" parent="Enemies" instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.665, -16.264, 171.547)
+
+[node name="Test Dummy3" parent="Enemies" instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187.94, -16.264, 189.65)
+
+[node name="Test Dummy4" parent="Enemies" instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.993, -16.264, 189.392)
+
+[connection signal="timeout" from="CanvasLayer/Timer/Timer" to="Player" method="_on_timer_timeout"]

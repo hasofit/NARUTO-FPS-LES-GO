@@ -1,0 +1,277 @@
+[gd_scene load_steps=19 format=3 uid="uid://q0srt58poiev"]
+
+[ext_resource type="Script" uid="uid://bhsqsc643j2d5" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://dadce4uxg87qf" path="res://scenes/kunai_proj.tscn" id="2_dqkch"]
+[ext_resource type="ArrayMesh" uid="uid://dlhlx3tcc8u3i" path="res://models/Kunai/source/tinker.obj" id="2_g2els"]
+[ext_resource type="FontFile" uid="uid://tve2ers0leg3" path="res://Ldfcomicsansbold-zgma.ttf" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://brn5bv3o4vxgd" path="res://scenes/kunai_wall.tscn" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://bno8fcwj4s555" path="res://models/crosshair.png" id="6_tuyoq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqkch"]
+albedo_color = Color(0.385493, 0.385492, 0.385492, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nnsk1"]
+material = SubResource("StandardMaterial3D_dqkch")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rwgxs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlg0r"]
+albedo_color = Color(0.396889, 0.396889, 0.396889, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dqkch"]
+material = SubResource("StandardMaterial3D_qlg0r")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
+radius = 0.517673
+height = 5.52376
+
+[sub_resource type="Animation" id="Animation_g2els"]
+resource_name = "Kunai"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Right Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.56494, 0, -0.555955), Vector3(0.0178306, 0, -0.555955)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Right Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.05267, -1.69878, 1.04605), Vector3(-1.05267, -0.329692, 1.04605)]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Right Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.56494, 0, -0.555955)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Right Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.05267, -1.69878, 1.04605)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/Right Hand/Kunai:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.44332, 0.942963, 0.18934)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D/Right Hand/Kunai:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.402317, 0.276477, -2.92445)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D/Left Hand:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.59482, -0.45481, -0.0465183)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D/Left Hand:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.200349, -2.64989, -3.06606)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqkch"]
+_data = {
+&"Kunai": SubResource("Animation_g2els"),
+&"RESET": SubResource("Animation_qhqgy")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqkch"]
+bg_color = Color(1, 0, 0, 0.490196)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlg0r"]
+bg_color = Color(0, 0.643187, 0.287412, 0.490196)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuyoq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3vyb7")
+throw_projectile_scene = ExtResource("2_dqkch")
+wall_projectile_scene = ExtResource("3_qlg0r")
+throw_speed = 50.0
+max_jumps = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_nnsk1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rwgxs")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6391, -0.541128)
+cull_mask = 1048063
+
+[node name="Right Hand" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.130282, 0.335663, -0.155361, 0.0819065, 0.153621, 0.274774, 0.113292, -0.497063, -0.0199929, 0.56494, 0, -0.555955)
+mesh = SubResource("CapsuleMesh_dqkch")
+skeleton = NodePath("../..")
+
+[node name="Kunai" type="Area3D" parent="Camera3D/Right Hand"]
+transform = Transform3D(-0.962458, 0.102887, 0.251173, -0.198239, -0.898549, -0.391551, 0.185406, -0.426644, 0.885211, -1.44332, 0.942963, 0.18934)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Kunai" type="MeshInstance3D" parent="Camera3D/Right Hand/Kunai"]
+transform = Transform3D(0.0299804, -0.000868592, 0.000651069, 0.00108074, 0.0255698, -0.0156531, -0.000101718, 0.0156663, 0.0255843, 0.092134, 1.0005, -0.286448)
+mesh = ExtResource("2_g2els")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Right Hand/Kunai"]
+transform = Transform3D(-0.0087266, -0.999962, 1.19209e-07, 0.999962, -0.00872651, -5.96046e-08, 2.23517e-08, -7.45058e-09, 1, 0.362899, 0.515375, 0.21082)
+shape = SubResource("CapsuleShape3D_g2els")
+
+[node name="Left Hand" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.16662, -0.0991945, -0.146341, -0.0141317, -0.605031, 0.0629446, -0.0924933, -0.0862515, -0.273239, -0.59482, -0.45481, -0.0465183)
+mesh = SubResource("CapsuleMesh_dqkch")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+&"": SubResource("AnimationLibrary_dqkch")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -188.0
+offset_right = 522.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.783475, 0.432978, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_qhqgy")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/background = SubResource("StyleBoxFlat_dqkch")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qlg0r")
+value = 100.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -41.0
+offset_right = 41.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_tuyoq")
+expand_mode = 1
+
+[node name="DamageCooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="Kunai_Wall" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.978172, -0.0428524, -4.43151)
+
+[node name="Marker3D3" type="Marker3D" parent="Kunai_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.944142, 0.0294521, 2.00561)
+
+[node name="Marker3D5" type="Marker3D" parent="Kunai_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20891, 0.0294521, 2.00561)
+
+[node name="Marker3D4" type="Marker3D" parent="Kunai_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172761, 0.0294521, 2.00561)
+
+[node name="Marker3D6" type="Marker3D" parent="Kunai_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.944142, 1.56215, 2.00561)
+
+[node name="Marker3D7" type="Marker3D" parent="Kunai_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20891, 1.56215, 2.00561)
+
+[node name="Marker3D8" type="Marker3D" parent="Kunai_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172761, 1.56215, 2.00561)
+
+[node name="ShadowClone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.978172, -0.0428524, -4.43151)
+
+[node name="ShadowClone1Marker" type="Marker3D" parent="ShadowClone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.947474, 0, 2.80543)
+
+[node name="MOA" type="CSGTorus3D" parent="."]
+transform = Transform3D(0.19, 0, 0, 0, -8.30516e-09, 0.19, 0, -0.19, -8.30516e-09, 0, -0.0868779, -0.528623)
+
+[node name="InnerEye" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.665, 0, 0, 0, 0.665, 0, 0, 0, 0.665, 0.00385022, 0.493124, -0.310316)
+
+[node name="OuterEye" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0.00385022, 0.493124, -0.544605)
+material_override = SubResource("StandardMaterial3D_tuyoq")
+
+[connection signal="body_entered" from="Camera3D/Right Hand/Kunai" to="." method="_on_kunai_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]
