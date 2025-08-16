@@ -119,6 +119,24 @@ use_collision = true
 size = Vector3(0.40332, 0.350255, 0.33313)
 material = SubResource("StandardMaterial3D_7r4gi")
 
+[node name="CSGBox3D11" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -216.456, -4.21699, 146.154)
+use_collision = true
+size = Vector3(0.0541076, 0.0698439, 0.0529251)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -208.439, -3.51863, 146.441)
+use_collision = true
+size = Vector3(0.0433121, 0.099253, 0.0455055)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -214.134, -3.08224, 149.561)
+use_collision = true
+size = Vector3(0.0433121, 0.112004, 0.0455055)
+material = SubResource("StandardMaterial3D_7r4gi")
+
 [node name="CSGBox3D10" type="CSGBox3D" parent="terrain"]
 transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -229.581, 1.95982, 129.078)
 use_collision = true
