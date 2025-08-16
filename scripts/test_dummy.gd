@@ -2,7 +2,7 @@ extends RigidBody3D
 
 @onready var player: CharacterBody3D = $"../../Player"
 
-var health = 10
+@export var health = 10
 
 func _physics_process(delta: float) -> void:
 	if health < 1:
