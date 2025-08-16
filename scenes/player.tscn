@@ -189,7 +189,7 @@ transform = Transform3D(-0.0087266, -0.999962, 1.19209e-07, 0.999962, -0.0087265
 shape = SubResource("CapsuleShape3D_g2els")
 
 [node name="Left Hand" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(0.16662, -0.0991945, -0.146341, -0.0141317, -0.605031, 0.0629446, -0.0924933, -0.0862515, -0.273239, -0.59482, -0.45481, -0.0465183)
+transform = Transform3D(0.16662, -0.0991944, -0.146341, -0.0141317, -0.605031, 0.0629446, -0.0924933, -0.0862515, -0.273239, -0.59482, -0.45481, -0.0465183)
 mesh = SubResource("CapsuleMesh_dqkch")
 skeleton = NodePath("../..")
 
