@@ -192,7 +192,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.665, -16.264, 171.547)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187.94, -16.264, 189.65)
 
 [node name="Test Dummy4" parent="Enemies" instance=ExtResource("2_rwgxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.993, -16.264, 189.392)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.744, -16.264, 188.287)
+lock_rotation = true
+ai = true
+SPEED = 20
 
 [node name="Test Dummy5" parent="Enemies" instance=ExtResource("2_rwgxs")]
 transform = Transform3D(5.22733e-05, 0, 1, 0, 1, 0, -1, 0, 5.22733e-05, -228.147, 0.246313, 129.108)

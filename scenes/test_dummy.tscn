@@ -30,3 +30,7 @@ shape = SubResource("CapsuleShape3D_nnsk1")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00986129, 0.741112, 0.961075)
+
+[node name="Change" type="Timer" parent="."]
+
+[connection signal="timeout" from="Change" to="." method="_on_change_timeout"]
