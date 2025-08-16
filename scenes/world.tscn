@@ -105,6 +105,31 @@ use_collision = true
 size = Vector3(0.40332, 0.259319, 0.33313)
 material = SubResource("StandardMaterial3D_7r4gi")
 
+[node name="CSGBox3D8" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -210.064, -14.384, 109.488)
+use_collision = true
+size = Vector3(0.40332, 0.350255, 0.33313)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -208.524, -14.1563, 149.934)
+use_collision = true
+size = Vector3(0.40332, 0.350255, 0.33313)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="terrain"]
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -229.581, 1.95982, 129.078)
+use_collision = true
+size = Vector3(0.147705, 0.189798, 0.107231)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="terrain/CSGBox3D10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018157, -0.000837572, -0.000212312)
+operation = 2
+use_collision = true
+size = Vector3(0.114106, 0.154708, 0.058948)
+material = SubResource("StandardMaterial3D_7r4gi")
+
 [node name="CSGBox3D7" type="CSGBox3D" parent="terrain"]
 transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -196.411, -16.3311, 67.6757)
 use_collision = true
@@ -112,7 +137,7 @@ size = Vector3(0.40332, 0.318889, 0.33313)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="Player" parent="." node_paths=PackedStringArray("world") instance=ExtResource("1_nnsk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.67874, 92.1397, -26.2449)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -205.503, 39.4064, 72.0993)
 throw_speed = 120.0
 world = NodePath("..")
 
@@ -166,5 +191,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187.94, -16.264, 189.65)
 
 [node name="Test Dummy4" parent="Enemies" instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.993, -16.264, 189.392)
+
+[node name="Test Dummy5" parent="Enemies" instance=ExtResource("2_rwgxs")]
+transform = Transform3D(5.22733e-05, 0, 1, 0, 1, 0, -1, 0, 5.22733e-05, -228.147, 0.246313, 129.108)
+health = 3
 
 [connection signal="timeout" from="CanvasLayer/Timer/Timer" to="Player" method="_on_timer_timeout"]
