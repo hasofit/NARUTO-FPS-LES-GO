@@ -56,12 +56,12 @@ const PLAYER_SCENE := preload("res://scenes/player.tscn")
 
 func _ready() -> void:
 	HP_BAR.max_value = health
-	
+
 	if !Input.is_action_pressed("ShadowClone"):
 		for i in enemies.get_children():
 			enemies_count += 1
 			enemy_count.text = str(enemies_count)
-	
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	# Validate & configure the Area3D
@@ -99,23 +99,24 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	HP_BAR.value = health
-	
+
 	if Input.is_action_just_pressed("Start"):
 		timer.start(enemies_count * 15)
-	
+
 	if Input.is_action_just_pressed("ShadowClone"):
 		for i in shadow_clone.get_children():
 			# Remove any previous clone(s) under this marker
 			if i.get_child_count() > 0:
 				for child in i.get_children():
-					child.queue_free()  # <-- FIX: free the child, not self
+					child.queue_free()
 				print("cleared?")
 			# Spawn a fresh clone under the marker
 			New_Clone = PLAYER_SCENE.instantiate()
 			i.add_child(New_Clone)
-	
+
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
+
 	# --- Throw inputs ---
 	if Input.is_action_just_pressed("Kunai Wall"):
 		_fire_kunai_wall()                # uses wall_cd
@@ -146,7 +147,6 @@ func _physics_process(delta: float) -> void:
 			velocity.y = jump_speed
 			jumps_left -= 1
 	# <<<
-
 	elif Input.is_action_just_released("jump") and velocity.y > 0.0:
 		velocity.y = 0.0
 
@@ -161,7 +161,7 @@ func _physics_process(delta: float) -> void:
 		animation_player.play("Kunai")
 
 	# --- Continuous contact damage ticking ---
-	for body in overlapping.keys():
+	for body in overlapping.keys().duplicate():
 		if not is_instance_valid(body):
 			overlapping.erase(body)
 			continue
@@ -175,30 +175,39 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	animation_player.play("RESET")
 
 func _process(_delta: float) -> void:
-	# Only hand throw toggles the visible/Area3D, so restore based on throw_cd
+	# Keep visibility tied to throw cooldown if desired
 	if throw_cd.one_shot and throw_cd.time_left == 0 and right_hand_kunai.visible == false:
 		right_hand_kunai.visible = true
-		if kunai_area:
-			kunai_area.monitoring = true
+	# Do NOT re-tie monitoring to cooldown; it's re-enabled immediately after throw.
 
 # --- Overlap handlers from Area3D ---
 func _on_kunai_body_entered(body: Node3D) -> void:
 	if body == self:
 		return
-	overlapping[body] = tick_interval
+	# Start at 0 so the first tick can happen ASAP
+	overlapping[body] = 0.0
 
 func _on_kunai_body_exited(body: Node3D) -> void:
-	overlapping.erase(body)
+	if overlapping.has(body):
+		overlapping.erase(body)
 
 # --- Damage application ---
 func _apply_contact_damage(body: Node) -> void:
-	if body == null:
+	if body == null or !is_instance_valid(body):
 		return
+
+	# Preferred: enemies implement apply_damage(damage: int)
 	if body.has_method("apply_damage"):
 		body.apply_damage(damage_per_tick)
-	elif "health" in body:
-		body.health -= damage_per_tick
-		if body.health < 1:
+		return
+
+	# Fallback: manipulate a "health" property if present
+	# All Objects have get()/set(); get("health") returns null if missing.
+	var current_hp = body.get("health")
+	if current_hp != null:
+		var hp := int(current_hp) - damage_per_tick
+		body.set("health", hp)
+		if hp < 1 and overlapping.has(body):
 			overlapping.erase(body)
 
 # =========================
@@ -247,6 +256,14 @@ func _throw_from_hand() -> void:
 
 	get_tree().current_scene.add_child(proj)
 	throw_cd.start(throw_cooldown)
+
+	# ✅ Re-enable the hand hitbox immediately on the next frame (avoids same-frame self-hits)
+	if kunai_area:
+		call_deferred("_reenable_kunai_area")
+
+func _reenable_kunai_area() -> void:
+	if is_instance_valid(kunai_area):
+		kunai_area.monitoring = true
 
 # Raycast from camera to crosshair; return direction from a given origin.
 func _aim_dir_from_camera(spawn_origin: Vector3, max_dist: float = 2000.0) -> Vector3:

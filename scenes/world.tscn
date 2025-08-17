@@ -316,6 +316,7 @@ health = 3
 
 [node name="Test Dummy6" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
 transform = Transform3D(0.0187961, 0, -0.999823, 0, 1, 0, 0.999823, 0, 0.0187961, -203.496, -2.29178, 149.641)
+lock_rotation = true
 world = NodePath("../..")
 health = 9
 shooting = true
