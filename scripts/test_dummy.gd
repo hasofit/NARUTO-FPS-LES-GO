@@ -20,9 +20,9 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 	if ai:
 		if left:
-			global_position = global_position + Vector3.LEFT * SPEED * delta
+			global_position += -transform.basis.x * SPEED * delta
 		elif !left:
-			global_position = global_position + Vector3.RIGHT * SPEED * delta
+			global_position += transform.basis.x * SPEED * delta
 		lock_rotation = true
 	else:
 		lock_rotation = false
