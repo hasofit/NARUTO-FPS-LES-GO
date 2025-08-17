@@ -19,12 +19,13 @@ func _on_body_entered(body: Node) -> void:
 	queue_free()
 
 func _apply_damage(body: Node) -> void:
-	if body.has_method("apply_damage"):
-		body.apply_damage(damage)
-	elif "health" in body:
+	if body.is_in_group("Damagbele"):
 		body.health -= damage
 		if body.health < 1:
-			body.queue_free()
+			if body.name == "Player":
+				get_tree().reload_current_scene()
+			else:
+				body.queue_free()
 
 func _on_life_timeout() -> void:
 	queue_free()

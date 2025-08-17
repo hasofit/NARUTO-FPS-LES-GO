@@ -28,6 +28,7 @@ extends CharacterBody3D
 @onready var shadow_clone: Node3D = $ShadowClone
 @onready var shadow_clone_1_marker: Marker3D = $ShadowClone/ShadowClone1Marker
 @onready var shadow_clone_2_marker: Marker3D = $ShadowClone/ShadowClone2Marker
+@onready var HP_BAR: ProgressBar = $CanvasLayer/ProgressBar
 
 # --- Movement config ---
 @export var base_speed: float = 7.0
@@ -35,6 +36,7 @@ extends CharacterBody3D
 @export var gravity: float = 30.0
 @export var world: Node3D
 @export var sens = 0.2
+@export var health = 10
 var is_sprinting := false
 var enemies_count = 0
 var New_Clone
@@ -53,6 +55,8 @@ var overlapping: Dictionary = {}  # Dictionary<Node3D, float>
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 
 func _ready() -> void:
+	HP_BAR.max_value = health
+	
 	if !Input.is_action_pressed("ShadowClone"):
 		for i in enemies.get_children():
 			enemies_count += 1
@@ -94,8 +98,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta: float) -> void:
+	HP_BAR.value = health
+	
 	if Input.is_action_just_pressed("Start"):
-		timer.start()
+		timer.start(enemies_count * 15)
 	
 	if Input.is_action_just_pressed("ShadowClone"):
 		for i in shadow_clone.get_children():

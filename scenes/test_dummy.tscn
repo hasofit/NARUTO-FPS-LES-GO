@@ -16,7 +16,7 @@ material = SubResource("StandardMaterial3D_nnsk1")
 radius = 1.00656
 height = 3.9884
 
-[node name="Test Dummy" type="RigidBody3D"]
+[node name="Test Dummy" type="RigidBody3D" groups=["Damagbele"]]
 collision_layer = 7
 collision_mask = 7
 sleeping = true

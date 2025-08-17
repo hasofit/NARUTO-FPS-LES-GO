@@ -242,7 +242,7 @@ size = Vector3(0.40332, 0.318889, 0.33313)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="Player" parent="." node_paths=PackedStringArray("world") instance=ExtResource("1_nnsk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -205.503, 39.4064, 72.0993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.898, 73.8669, 0.987106)
 throw_speed = 120.0
 world = NodePath("..")
 sens = 0.125
