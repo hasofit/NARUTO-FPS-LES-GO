@@ -27,7 +27,7 @@ skeleton = NodePath("../../../..")
 shape = SubResource("CapsuleShape3D_844xj")
 
 [node name="Life" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 6.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Life" to="." method="_on_life_timeout"]

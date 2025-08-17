@@ -22,6 +22,7 @@ collision_mask = 7
 sleeping = true
 script = ExtResource("1_p43bn")
 kunai = ExtResource("2_gionw")
+shooting = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -36,6 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00986129, 0.741112, 0.9610
 [node name="Change" type="Timer" parent="."]
 
 [node name="Shooting" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78822, 2.758)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75154, 4.04979)
 
 [connection signal="timeout" from="Change" to="." method="_on_change_timeout"]
