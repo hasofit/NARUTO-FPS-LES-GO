@@ -254,7 +254,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.547, -16.264, 171.849)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.665, -16.264, 171.547)
 
 [node name="Test Dummy3" parent="Enemies" instance=ExtResource("2_rwgxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187.94, -16.264, 189.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.582, -16.737, 188.332)
+ai = true
+SPEED = 30
 
 [node name="Test Dummy4" parent="Enemies" instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.744, -16.264, 188.287)
