@@ -14,6 +14,9 @@ extends RigidBody3D
 
 var left = false
 
+func _ready() -> void:
+	change.start(turn_time)
+
 func _physics_process(delta: float) -> void:
 	if ai:
 		if left:

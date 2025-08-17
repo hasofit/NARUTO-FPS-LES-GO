@@ -34,7 +34,6 @@ shape = SubResource("CapsuleShape3D_nnsk1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00986129, 0.741112, 0.961075)
 
 [node name="Change" type="Timer" parent="."]
-autostart = true
 
 [node name="shooting_point" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78549, 4.42925)
