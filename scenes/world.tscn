@@ -126,16 +126,16 @@ size = Vector3(0.164894, 0.187441, 0.0898914)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="terrain"]
-transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -200.966, -1.19222, 151.099)
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -199.8, -1.19222, 151.099)
 use_collision = true
-size = Vector3(0.147, 0.235, 0.071)
+size = Vector3(0.177138, 0.235, 0.071)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="terrain/CSGBox3D14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0139229, -0.0276876, -0.0221467)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0224752, -0.0161615, -0.0156591)
 operation = 2
 use_collision = true
-size = Vector3(0.120088, 0.0864641, 0.0265403)
+size = Vector3(0.137192, 0.109516, 0.0395153)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="terrain"]
@@ -175,9 +175,9 @@ size = Vector3(0.0354111, 0.0156954, 0.0782225)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="terrain"]
-transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -198.41, -1.28039, 155.066)
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -198.41, -1.28039, 157.746)
 use_collision = true
-size = Vector3(0.142284, 0.23521, 0.172652)
+size = Vector3(0.142284, 0.23521, 0.103416)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="terrain"]
@@ -285,33 +285,40 @@ wait_time = 60.0
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="Test Dummy" parent="Enemies" instance=ExtResource("2_rwgxs")]
+[node name="Test Dummy" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.547, -16.264, 171.849)
+world = NodePath("../..")
 
-[node name="Test Dummy2" parent="Enemies" instance=ExtResource("2_rwgxs")]
+[node name="Test Dummy2" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.665, -16.264, 171.547)
+world = NodePath("../..")
 
-[node name="Test Dummy3" parent="Enemies" instance=ExtResource("2_rwgxs")]
+[node name="Test Dummy3" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.582, -16.737, 188.332)
+world = NodePath("../..")
 ai = true
 SPEED = 30
 
-[node name="Test Dummy4" parent="Enemies" instance=ExtResource("2_rwgxs")]
+[node name="Test Dummy4" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.744, -16.264, 188.287)
 lock_rotation = true
+world = NodePath("../..")
 SPEED = 20
 
-[node name="Test Dummy5" parent="Enemies" instance=ExtResource("2_rwgxs")]
+[node name="Test Dummy5" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
 transform = Transform3D(5.22733e-05, 0, 1, 0, 1, 0, -1, 0, 5.22733e-05, -228.147, 0.246313, 129.108)
+world = NodePath("../..")
 health = 3
 
-[node name="Test Dummy6" parent="Enemies" instance=ExtResource("2_rwgxs")]
-transform = Transform3D(0.0187961, 0, -0.999823, 0, 1, 0, 0.999823, 0, 0.0187961, -203.496, -3.85813, 149.351)
+[node name="Test Dummy6" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
+transform = Transform3D(0.0187961, 0, -0.999823, 0, 1, 0, 0.999823, 0, 0.0187961, -203.496, -2.29178, 149.641)
+world = NodePath("../..")
+shooting = true
 
-[node name="Test Dummy" parent="." instance=ExtResource("2_rwgxs")]
+[node name="Test Dummy7" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
 transform = Transform3D(-0.0230887, 0, -0.999733, 0, 1, 0, 0.999733, 0, -0.0230887, -206.428, 12.7939, 159.67)
+world = NodePath("../..")
 ai = true
 SPEED = 25
-turn_time = 0
 
 [connection signal="timeout" from="CanvasLayer/Timer/Timer" to="Player" method="_on_timer_timeout"]
