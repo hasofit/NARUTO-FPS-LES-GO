@@ -14,6 +14,16 @@ extends RigidBody3D
 
 var left = false
 
+func _physics_process(delta: float) -> void:
+	if ai:
+		if left:
+			global_position += -transform.basis.x * SPEED * delta
+		elif !left:
+			global_position += transform.basis.x * SPEED * delta
+		lock_rotation = true
+	else:
+		lock_rotation = false
+
 func _on_change_timeout() -> void:
 	if shooting:
 		shoot()
