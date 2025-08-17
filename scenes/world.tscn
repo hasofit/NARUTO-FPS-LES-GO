@@ -126,22 +126,22 @@ size = Vector3(0.164894, 0.187441, 0.0898914)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="terrain"]
-transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -200.966, -1.19222, 151.099)
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -199.873, -1.25822, 151.171)
 use_collision = true
-size = Vector3(0.147, 0.235, 0.071)
+size = Vector3(0.180434, 0.235, 0.071)
 material = SubResource("StandardMaterial3D_7r4gi")
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="terrain/CSGBox3D14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0139229, -0.0276876, -0.0221467)
+[node name="CSGBox3D22" type="CSGBox3D" parent="terrain/CSGBox3D14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0487051, -0.0226518, -0.0135137)
 operation = 2
 use_collision = true
-size = Vector3(0.120088, 0.0864641, 0.0265403)
+size = Vector3(0.106388, 0.122959, 0.0348398)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="terrain"]
-transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -202.429, -2.0493, 146.06)
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -202.429, -2.0493, 146.27)
 use_collision = true
-size = Vector3(0.149012, 0.161129, 0.057519)
+size = Vector3(0.149012, 0.161129, 0.0629392)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="terrain"]
@@ -175,9 +175,16 @@ size = Vector3(0.0354111, 0.0156954, 0.0782225)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="terrain"]
-transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -198.41, -1.28039, 155.066)
+transform = Transform3D(77.41, 0, 0, 0, 47.4926, 0, 0, 0, 77.41, -198.41, -1.28039, 159.617)
 use_collision = true
-size = Vector3(0.142284, 0.23521, 0.172652)
+size = Vector3(0.142284, 0.23521, 0.148046)
+material = SubResource("StandardMaterial3D_7r4gi")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="terrain/CSGBox3D16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0403206, -0.0264759, -0.0996757)
+operation = 2
+use_collision = true
+size = Vector3(0.161797, 0.0864641, 0.0265403)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="terrain"]
@@ -187,38 +194,38 @@ size = Vector3(0.152731, 0.349759, 0.153528)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="terrain/CSGBox3D15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133216, -0.0314282, -0.00503731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133216, -0.0314282, -0.0128744)
 operation = 2
 use_collision = true
 size = Vector3(0.0379387, 0.0657289, 0.129437)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="terrain/CSGBox3D15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0186737, -0.0612342, -0.00503731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0186737, -0.0612342, -0.027915)
 operation = 2
 use_collision = true
 size = Vector3(0.0428951, 0.0964493, 0.129437)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="terrain/CSGBox3D15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0384538, -0.00110978, -0.00503731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0384541, -0.00110978, -0.0223227)
 operation = 2
 use_collision = true
 size = Vector3(0.0428951, 0.0964493, 0.129437)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="terrain/CSGBox3D15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00579858, -0.0401348, -0.00503731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00579858, -0.0401348, -0.0178421)
 operation = 2
 use_collision = true
 size = Vector3(0.0428951, 0.0964493, 0.129437)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D21" type="CSGBox3D" parent="terrain/CSGBox3D15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0666599, 0.0415625, -0.00503731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0666599, 0.0534626, -0.0199864)
 operation = 2
 use_collision = true
-size = Vector3(0.0428951, 0.062751, 0.129437)
+size = Vector3(0.0428951, 0.0865513, 0.129437)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="terrain"]
@@ -293,7 +300,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.665, -16.264, 171.547)
 
 [node name="Test Dummy3" parent="Enemies" instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.582, -16.737, 188.332)
-ai = true
 SPEED = 30
 
 [node name="Test Dummy4" parent="Enemies" instance=ExtResource("2_rwgxs")]
@@ -305,13 +311,13 @@ SPEED = 20
 transform = Transform3D(5.22733e-05, 0, 1, 0, 1, 0, -1, 0, 5.22733e-05, -228.147, 0.246313, 129.108)
 health = 3
 
-[node name="Test Dummy6" parent="Enemies" instance=ExtResource("2_rwgxs")]
-transform = Transform3D(0.0187961, 0, -0.999823, 0, 1, 0, 0.999823, 0, 0.0187961, -203.496, -3.85813, 149.351)
-
 [node name="Test Dummy" parent="." instance=ExtResource("2_rwgxs")]
 transform = Transform3D(-0.0230887, 0, -0.999733, 0, 1, 0, 0.999733, 0, -0.0230887, -206.428, 12.7939, 159.67)
 ai = true
-SPEED = 25
-turn_time = 0
+SPEED = 10
+turn_time = 0.35
+
+[node name="Test Dummy2" parent="." instance=ExtResource("2_rwgxs")]
+transform = Transform3D(0.00966899, 0, -0.999953, 0, 1, 0, 0.999953, 0, 0.00966899, -200.775, -3.25384, 150.064)
 
 [connection signal="timeout" from="CanvasLayer/Timer/Timer" to="Player" method="_on_timer_timeout"]

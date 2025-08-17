@@ -6,7 +6,7 @@ extends RigidBody3D
 @export var health = 10
 @export var ai = false
 @export var SPEED = 300
-@export var turn_time = 1
+@export var turn_time : float = 1
 
 var left = false
 
