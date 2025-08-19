@@ -29,6 +29,8 @@ extends CharacterBody3D
 @onready var HP_BAR: ProgressBar = $"CanvasLayer/Health Bar"
 @onready var slow: Timer = $Slow
 @onready var mana_bar: ProgressBar = $"CanvasLayer/Mana Bar"
+@onready var xp_bar: ProgressBar = $CanvasLayer/XP_BAR
+@onready var xp_label: Label = $CanvasLayer/XP_BAR/XP_LABEL
 
 # --- Movement config ---
 @export var base_speed: float = 7.0
@@ -53,6 +55,9 @@ var jumps_left: int = 0
 @export var mana = 100
 @export var max_mana = 100
 @export var mana_regen = 5
+var xp = 0
+var lvl = 0
+var xp_lvl_up = 100
 
 var overlapping: Dictionary = {}  # Dictionary<Node3D, float>
 
@@ -102,19 +107,39 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("dummy_spawn"):
+		const TEST_DUMMY = preload("res://scenes/test_dummy.tscn")
+		var new_test_dummy = TEST_DUMMY.instantiate()
+		enemies.add_child(new_test_dummy)
+		new_test_dummy.health = 1
+		new_test_dummy.global_position = global_position + Vector3.FORWARD * 5
+	
+	xp_bar.value = xp
+	xp_bar.max_value = xp_lvl_up
+	
+	if xp >= xp_lvl_up:
+		lvl += 1
+		xp_label.text = "LVL: " + str(lvl)
+		xp = 0
+		xp_lvl_up *= 1.1
+		print(xp_lvl_up)
+	
+	if mana < 0:
+		mana = 0
+	
 	mana_bar.value = mana
 	mana_bar.max_value = max_mana
 	
 	if mana != max_mana:
 		mana += mana_regen * delta
 	
-	if Input.is_action_just_pressed("slow time") and mana > 30:
-		mana -= 30
-		if Engine.time_scale == 1:
+	if Input.is_action_just_pressed("slow time"):
+		if Engine.time_scale == 1 and mana > 30:
+			mana -= 30
 			Engine.time_scale = 0.1
 			slow.start()
 		else:
-			mana += 30
 			Engine.time_scale = 1
 			slow.stop()
 	
@@ -325,3 +350,6 @@ func _on_timer_timeout() -> void:
 
 func _on_slow_timeout() -> void:
 	Engine.time_scale = 1
+
+func xp_up(xp_up):
+	xp += xp_up

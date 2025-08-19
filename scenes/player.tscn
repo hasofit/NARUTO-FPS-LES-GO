@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://q0srt58poiev"]
+[gd_scene load_steps=23 format=3 uid="uid://q0srt58poiev"]
 
 [ext_resource type="Script" uid="uid://bhsqsc643j2d5" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://dadce4uxg87qf" path="res://scenes/kunai_proj.tscn" id="2_dqkch"]
@@ -162,6 +162,16 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smehm"]
+bg_color = Color(0.721444, 0.585467, 5.77569e-07, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur7pv"]
+bg_color = Color(0.74902, 0.784314, 0, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuyoq"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -219,17 +229,18 @@ libraries = {
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -188.0
-offset_right = 522.0
+offset_top = -98.0
+offset_right = 272.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.783475, 0.432978, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("3_qhqgy")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 50
 theme_override_styles/background = SubResource("StyleBoxFlat_dqkch")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qlg0r")
 value = 100.0
+rounded = true
 
 [node name="Mana Bar" type="ProgressBar" parent="CanvasLayer" groups=["Damagbele"]]
 anchors_preset = 3
@@ -237,18 +248,19 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -522.0
-offset_top = -188.0
+offset_left = -216.0
+offset_top = -88.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.621552, 0.545462, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("3_qhqgy")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 50
 theme_override_styles/background = SubResource("StyleBoxFlat_tuyoq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fjrip")
 value = 100.0
+rounded = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
@@ -264,6 +276,34 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_tuyoq")
 expand_mode = 1
+
+[node name="XP_BAR" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 402.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_qhqgy")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/background = SubResource("StyleBoxFlat_smehm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ur7pv")
+rounded = true
+show_percentage = false
+
+[node name="XP_LABEL" type="Label" parent="CanvasLayer/XP_BAR"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.932587, 0.905327, 0, 1)
+theme_override_fonts/font = ExtResource("3_qhqgy")
+theme_override_font_sizes/font_size = 50
+text = "LVL: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DamageCooldown" type="Timer" parent="."]
 autostart = true

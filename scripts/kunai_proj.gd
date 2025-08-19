@@ -27,11 +27,6 @@ func _apply_damage(body: Node) -> void:
 		if body.health < 1:
 			if body.name == "Player":
 				get_tree().reload_current_scene()
-			else:
-				if (body.get_parent() == enemies):
-					player.enemies_count -= 1
-					player.enemy_count.text = player.enemies_count
-				body.queue_free()
 
 func _on_life_timeout() -> void:
 	queue_free()

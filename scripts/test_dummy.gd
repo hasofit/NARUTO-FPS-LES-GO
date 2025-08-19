@@ -18,6 +18,10 @@ func _ready() -> void:
 	change.start(turn_time)
 
 func _physics_process(delta: float) -> void:
+	if health < 1:
+		player.xp_up(10)
+		queue_free()
+	
 	if ai:
 		if left:
 			global_position += -transform.basis.x * SPEED * delta
