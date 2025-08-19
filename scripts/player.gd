@@ -52,9 +52,12 @@ var jumps_left: int = 0
 @export var damage_per_tick: int = 1
 @export var tick_interval: float = 0.2
 
+@onready var skill_tree: Panel = $CanvasLayer/Skill_tree
+@onready var skill_points_label: Label = $CanvasLayer/Skill_tree/Skill_points_label
 @export var mana = 100
 @export var max_mana = 100
 @export var mana_regen = 5
+@export var skill_points = 0
 var xp = 0
 var lvl = 0
 var xp_lvl_up = 100
@@ -108,6 +111,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if Input.is_action_just_pressed("Skill_menu"):
+		if skill_tree.visible:
+			skill_tree.hide()
+		else:
+			skill_tree.show()
+
 	if Input.is_action_just_pressed("dummy_spawn"):
 		const TEST_DUMMY = preload("res://scenes/test_dummy.tscn")
 		var new_test_dummy = TEST_DUMMY.instantiate()
@@ -119,11 +128,12 @@ func _physics_process(delta: float) -> void:
 	xp_bar.max_value = xp_lvl_up
 	
 	if xp >= xp_lvl_up:
+		skill_points += 1
+		skill_points_label.text = "Skill Points: " + str(skill_points)
 		lvl += 1
 		xp_label.text = "LVL: " + str(lvl)
 		xp = 0
 		xp_lvl_up *= 1.1
-		print(xp_lvl_up)
 	
 	if mana < 0:
 		mana = 0
