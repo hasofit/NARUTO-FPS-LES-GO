@@ -126,7 +126,7 @@ size = Vector3(0.177138, 0.235, 0.071)
 material = SubResource("StandardMaterial3D_7r4gi")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="terrain/CSGBox3D14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0224752, -0.0161615, -0.0156591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0224752, -0.0448267, -0.0156591)
 operation = 2
 use_collision = true
 size = Vector3(0.137192, 0.109516, 0.0395153)
@@ -249,42 +249,8 @@ sens = 0.125
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Enemy count" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -951.0
-offset_top = -37.0
-offset_right = -842.0
-offset_bottom = 224.0
-grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 191
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 681.0
-offset_top = -37.0
-offset_right = 790.0
-offset_bottom = 224.0
-grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 191
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Timer" parent="CanvasLayer/Timer"]
-wait_time = 60.0
-
 [node name="Enemies" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="Test Dummy" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.547, -16.264, 171.849)
@@ -315,7 +281,7 @@ world = NodePath("../..")
 health = 3
 
 [node name="Test Dummy6" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
-transform = Transform3D(0.0187961, 0, -0.999823, 0, 1, 0, 0.999823, 0, 0.0187961, -203.496, -2.29178, 149.641)
+transform = Transform3D(0.0187961, 0, -0.999823, 0, 1, 0, 0.999823, 0, 0.0187961, -203.496, -5.86378, 149.641)
 lock_rotation = true
 world = NodePath("../..")
 health = 9
@@ -328,4 +294,9 @@ ai = true
 SPEED = 15
 turn_time = 0.35
 
-[connection signal="timeout" from="CanvasLayer/Timer/Timer" to="Player" method="_on_timer_timeout"]
+[node name="Test Dummy8" parent="Enemies" node_paths=PackedStringArray("world") instance=ExtResource("2_rwgxs")]
+transform = Transform3D(-0.0230887, 0, -0.999733, 0, 1, 0, 0.999733, 0, -0.0230887, -209.892, 12.7939, 159.67)
+world = NodePath("../..")
+ai = true
+SPEED = 15
+turn_time = 0.35

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://q0srt58poiev"]
+[gd_scene load_steps=21 format=3 uid="uid://q0srt58poiev"]
 
 [ext_resource type="Script" uid="uid://bhsqsc643j2d5" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://dadce4uxg87qf" path="res://scenes/kunai_proj.tscn" id="2_dqkch"]
@@ -148,6 +148,20 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuyoq"]
+bg_color = Color(1.82897e-06, 0.695558, 0.618971, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjrip"]
+bg_color = Color(0.432544, 0.569902, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuyoq"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -201,7 +215,7 @@ libraries = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" groups=["Damagbele"]]
+[node name="Health Bar" type="ProgressBar" parent="CanvasLayer" groups=["Damagbele"]]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -215,6 +229,25 @@ theme_override_fonts/font = ExtResource("3_qhqgy")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/background = SubResource("StyleBoxFlat_dqkch")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qlg0r")
+value = 100.0
+
+[node name="Mana Bar" type="ProgressBar" parent="CanvasLayer" groups=["Damagbele"]]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -522.0
+offset_top = -188.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.621552, 0.545462, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_qhqgy")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/background = SubResource("StyleBoxFlat_tuyoq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fjrip")
 value = 100.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
@@ -275,6 +308,12 @@ transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0.00385022, 0.493124
 layers = 512
 material_override = SubResource("StandardMaterial3D_tuyoq")
 
+[node name="Slow" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+ignore_time_scale = true
+
 [connection signal="body_entered" from="Camera3D/Right Hand/Kunai" to="." method="_on_kunai_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]
+[connection signal="timeout" from="Slow" to="." method="_on_slow_timeout"]

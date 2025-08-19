@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@onready var enemies: Node3D = $Enemies
+@onready var enemies: Node3D = %Enemies
 @onready var player: CharacterBody3D = $Player
 
 @export var damage: int = 20
@@ -28,7 +28,7 @@ func _apply_damage(body: Node) -> void:
 			if body.name == "Player":
 				get_tree().reload_current_scene()
 			else:
-				if body.get_parent() == enemies:
+				if (body.get_parent() == enemies):
 					player.enemies_count -= 1
 					player.enemy_count.text = player.enemies_count
 				body.queue_free()

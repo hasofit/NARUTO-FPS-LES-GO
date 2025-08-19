@@ -12,10 +12,8 @@ extends CharacterBody3D
 @onready var throw_cd: Timer = Timer.new()
 @onready var wall_cd: Timer = Timer.new()
 @onready var kunai_wall: Node3D = $Kunai_Wall
-@onready var enemies: Node3D = $"../Enemies"
+@onready var enemies: Node3D = %Enemies
 @onready var enemy_count: Label = $"../CanvasLayer/Enemy count"
-@onready var timer: Timer = $"../CanvasLayer/Timer/Timer"
-@onready var timer_label: Label = $"../CanvasLayer/Timer"
 
 # --- Nodes ---
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -28,7 +26,9 @@ extends CharacterBody3D
 @onready var shadow_clone: Node3D = $ShadowClone
 @onready var shadow_clone_1_marker: Marker3D = $ShadowClone/ShadowClone1Marker
 @onready var shadow_clone_2_marker: Marker3D = $ShadowClone/ShadowClone2Marker
-@onready var HP_BAR: ProgressBar = $CanvasLayer/ProgressBar
+@onready var HP_BAR: ProgressBar = $"CanvasLayer/Health Bar"
+@onready var slow: Timer = $Slow
+@onready var mana_bar: ProgressBar = $"CanvasLayer/Mana Bar"
 
 # --- Movement config ---
 @export var base_speed: float = 7.0
@@ -49,18 +49,22 @@ var jumps_left: int = 0
 # --- Contact DPS config ---
 @export var damage_per_tick: int = 1
 @export var tick_interval: float = 0.2
+
+@export var mana = 100
+@export var max_mana = 100
+@export var mana_regen = 5
+
 var overlapping: Dictionary = {}  # Dictionary<Node3D, float>
 
 # --- Scenes ---
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 
 func _ready() -> void:
+	
+	mana_bar.max_value = max_mana
+	mana_bar.value = mana
+	
 	HP_BAR.max_value = health
-
-	if !Input.is_action_pressed("ShadowClone"):
-		for i in enemies.get_children():
-			enemies_count += 1
-			enemy_count.text = str(enemies_count)
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -98,12 +102,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta: float) -> void:
+	mana_bar.value = mana
+	mana_bar.max_value = max_mana
+	
+	if mana != max_mana:
+		mana += mana_regen * delta
+	
+	if Input.is_action_just_pressed("slow time") and mana > 30:
+		mana -= 30
+		if Engine.time_scale == 1:
+			Engine.time_scale = 0.1
+			slow.start()
+		else:
+			mana += 30
+			Engine.time_scale = 1
+			slow.stop()
+	
 	HP_BAR.value = health
 
-	if Input.is_action_just_pressed("Start"):
-		timer.start(enemies_count * 15)
-
-	if Input.is_action_just_pressed("ShadowClone"):
+	if Input.is_action_just_pressed("ShadowClone") and mana > 20:
 		for i in shadow_clone.get_children():
 			# Remove any previous clone(s) under this marker
 			if i.get_child_count() > 0:
@@ -113,12 +130,14 @@ func _physics_process(delta: float) -> void:
 			# Spawn a fresh clone under the marker
 			New_Clone = PLAYER_SCENE.instantiate()
 			i.add_child(New_Clone)
+			mana -= 20
 
 	if Input.is_action_pressed("restart"):
+		Engine.time_scale = 1
 		get_tree().reload_current_scene()
 
 	# --- Throw inputs ---
-	if Input.is_action_just_pressed("Kunai Wall"):
+	if Input.is_action_just_pressed("Kunai Wall") and mana > 10:
 		_fire_kunai_wall()                # uses wall_cd
 
 	if Input.is_action_just_pressed("throw"):
@@ -287,6 +306,7 @@ func _fire_kunai_wall() -> void:
 	for m in kunai_wall.get_children():
 		if m is Marker3D:
 			_spawn_from_marker(m as Marker3D)
+			mana -= 10
 	wall_cd.start(wall_cooldown)
 
 func _spawn_from_marker(m: Marker3D) -> void:
@@ -301,3 +321,7 @@ func _spawn_from_marker(m: Marker3D) -> void:
 
 func _on_timer_timeout() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_slow_timeout() -> void:
+	Engine.time_scale = 1
