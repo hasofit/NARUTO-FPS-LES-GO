@@ -280,6 +280,22 @@ theme_override_styles/background = SubResource("StyleBoxFlat_tuyoq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fjrip")
 value = 100.0
 rounded = true
+show_percentage = false
+
+[node name="MANA_BAR" type="Label" parent="CanvasLayer/Mana Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.619608, 0.545098, 1)
+theme_override_fonts/font = ExtResource("3_qhqgy")
+theme_override_font_sizes/font_size = 50
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
@@ -325,6 +341,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Skill_tree" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -365,6 +382,72 @@ text = "Max Mana +10%"
 icon_alignment = 1
 expand_icon = true
 
+[node name="Health + 10 Icon" type="TextureRect" parent="CanvasLayer/Skill_tree"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -156.0
+offset_right = 156.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_smehm")
+
+[node name="Health + 10" type="Button" parent="CanvasLayer/Skill_tree/Health + 10 Icon"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -143.0
+offset_right = 314.0
+offset_bottom = 143.0
+grow_vertical = 2
+theme = SubResource("Theme_3v2ag")
+theme_override_font_sizes/font_size = 30
+text = "Max Mana +10%"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Speed + 10 Icon" type="TextureRect" parent="CanvasLayer/Skill_tree"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 358.0
+offset_top = -156.0
+offset_right = 670.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_smehm")
+
+[node name="Speed + 10" type="Button" parent="CanvasLayer/Skill_tree/Speed + 10 Icon"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -143.0
+offset_right = 314.0
+offset_bottom = 143.0
+grow_vertical = 2
+theme = SubResource("Theme_3v2ag")
+theme_override_font_sizes/font_size = 30
+text = "Max Mana +10%"
+icon_alignment = 1
+expand_icon = true
+
 [node name="Skill_points_label" type="Label" parent="CanvasLayer/Skill_tree"]
 layout_mode = 1
 anchors_preset = 5
@@ -382,6 +465,52 @@ theme_override_font_sizes/font_size = 50
 text = "Skill Points: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MenuButton" type="MenuButton" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -313.0
+offset_bottom = 124.0
+grow_horizontal = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+flat = false
+item_count = 16
+popup/item_0/text = "Move Left - D"
+popup/item_0/id = 0
+popup/item_1/text = "Move Right - A"
+popup/item_1/id = 1
+popup/item_2/text = "Move Forward - W"
+popup/item_2/id = 2
+popup/item_3/text = "Move Backwards - S"
+popup/item_3/id = 3
+popup/item_4/text = "Jump - Space"
+popup/item_4/id = 4
+popup/item_5/text = "Hit (Animtion only) - Left Mouse Button"
+popup/item_5/id = 5
+popup/item_6/text = "Sprint - Left Control / Left Shift"
+popup/item_6/id = 6
+popup/item_7/text = "Throw Kunai - Right Mouse Button"
+popup/item_7/id = 7
+popup/item_8/text = "Kunai Wall - F"
+popup/item_8/id = 8
+popup/item_9/text = "Restart - R"
+popup/item_9/id = 9
+popup/item_10/text = "Shadow Clone - Q"
+popup/item_10/id = 10
+popup/item_11/text = "Slow Time - E"
+popup/item_11/id = 11
+popup/item_12/text = "Dummy Spawn - J"
+popup/item_12/id = 12
+popup/item_13/text = "Skill Menu - TAB"
+popup/item_13/id = 13
+popup/item_14/text = "Heal - V"
+popup/item_14/id = 14
+popup/item_15/text = "Unlock Mouse - Escape"
+popup/item_15/id = 15
 
 [node name="DamageCooldown" type="Timer" parent="."]
 autostart = true
@@ -434,5 +563,7 @@ ignore_time_scale = true
 [connection signal="body_entered" from="Camera3D/Right Hand/Kunai" to="." method="_on_kunai_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Skill_tree/Mana + 10 Icon/Mana + 10" to="CanvasLayer/Skill_tree" method="_on_mana__10_pressed"]
+[connection signal="pressed" from="CanvasLayer/Skill_tree/Health + 10 Icon/Health + 10" to="CanvasLayer/Skill_tree" method="_on_health__10_pressed"]
+[connection signal="pressed" from="CanvasLayer/Skill_tree/Speed + 10 Icon/Speed + 10" to="CanvasLayer/Skill_tree" method="_on_speed__10_pressed"]
 [connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]
 [connection signal="timeout" from="Slow" to="." method="_on_slow_timeout"]

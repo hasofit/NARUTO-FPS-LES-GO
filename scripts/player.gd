@@ -38,7 +38,8 @@ extends CharacterBody3D
 @export var gravity: float = 30.0
 @export var world: Node3D
 @export var sens = 0.2
-@export var health = 10
+@export var max_health = 10
+var health = 10
 var is_sprinting := false
 var enemies_count = 0
 var New_Clone
@@ -53,6 +54,7 @@ var jumps_left: int = 0
 @export var tick_interval: float = 0.2
 
 @onready var skill_tree: Panel = $CanvasLayer/Skill_tree
+@onready var mana_bar_label: Label = $"CanvasLayer/Mana Bar/MANA_BAR"
 @onready var skill_points_label: Label = $CanvasLayer/Skill_tree/Skill_points_label
 @export var mana = 100
 @export var max_mana = 100
@@ -111,6 +113,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if Input.is_action_pressed("Heal") and mana >= 100:
+		mana -= 100
+		health = max_health
+	
+	mana_bar_label.text = str(round(mana))
+	
+	skill_points_label.text = "Skill Points: " + str(skill_points)
+	
 	if Input.is_action_just_pressed("Skill_menu"):
 		if skill_tree.visible:
 			skill_tree.hide()
@@ -129,7 +139,6 @@ func _physics_process(delta: float) -> void:
 	
 	if xp >= xp_lvl_up:
 		skill_points += 1
-		skill_points_label.text = "Skill Points: " + str(skill_points)
 		lvl += 1
 		xp_label.text = "LVL: " + str(lvl)
 		xp = 0
@@ -141,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	mana_bar.value = mana
 	mana_bar.max_value = max_mana
 	
-	if mana != max_mana:
+	if mana < max_mana:
 		mana += mana_regen * delta
 	
 	if Input.is_action_just_pressed("slow time"):
@@ -154,6 +163,9 @@ func _physics_process(delta: float) -> void:
 			slow.stop()
 	
 	HP_BAR.value = health
+	
+	if health > max_health:
+		health = max_health
 
 	if Input.is_action_just_pressed("ShadowClone") and mana > 20:
 		for i in shadow_clone.get_children():
@@ -341,7 +353,7 @@ func _fire_kunai_wall() -> void:
 	for m in kunai_wall.get_children():
 		if m is Marker3D:
 			_spawn_from_marker(m as Marker3D)
-			mana -= 10
+			mana -= 2.5
 	wall_cd.start(wall_cooldown)
 
 func _spawn_from_marker(m: Marker3D) -> void:
