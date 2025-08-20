@@ -20,17 +20,15 @@ var left = false
 
 func _ready() -> void:
 	change.start(turn_time)
-	
-	lvl_label.text = "LVL: " + str(LVL)
 	health *= LVL / 10 + 1
-	health_label.text = str(health)
 
 func _physics_process(delta: float) -> void:
 	
+	lvl_label.text = "LVL: " + str(LVL)
+	health_label.text = str(health)
+	
 	if chasing:
 		global_position = global_position.move_toward(player.global_position, 10 * delta)
-	
-	health_label.text = str(health)
 	
 	if health < 1:
 		player.xp_up(10)
@@ -41,9 +39,6 @@ func _physics_process(delta: float) -> void:
 			global_position += -transform.basis.x * SPEED * delta
 		elif !left:
 			global_position += transform.basis.x * SPEED * delta
-		lock_rotation = true
-	else:
-		lock_rotation = false
 
 func _on_change_timeout() -> void:
 	if shooting:

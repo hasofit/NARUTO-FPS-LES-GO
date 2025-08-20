@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccmsp7w6f833i"]
+[gd_scene load_steps=16 format=3 uid="uid://ccmsp7w6f833i"]
 
 [ext_resource type="Script" uid="uid://bknb3mhapw7pi" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://q0srt58poiev" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://drpfbvemhhrno" path="res://scenes/test_dummy.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://cdix782vhs4yn" path="res://scenes/enemy_spawner.tscn" id="4_k0juu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5uuo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -303,3 +304,6 @@ world = NodePath("../..")
 ai = true
 SPEED = 15
 turn_time = 0.35
+
+[node name="Enemy Spawner" parent="." instance=ExtResource("4_k0juu")]
+transform = Transform3D(17.64, 0, 0, 0, 2.717, 0, 0, 0, 17.64, -8.02325, -27.4388, -69.3608)
