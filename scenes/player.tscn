@@ -200,6 +200,7 @@ throw_projectile_scene = ExtResource("2_dqkch")
 wall_projectile_scene = ExtResource("3_qlg0r")
 throw_speed = 50.0
 max_jumps = 3
+skill_points = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_nnsk1")
@@ -341,7 +342,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Skill_tree" type="Panel" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -411,7 +411,7 @@ offset_bottom = 143.0
 grow_vertical = 2
 theme = SubResource("Theme_3v2ag")
 theme_override_font_sizes/font_size = 30
-text = "Max Mana +10%"
+text = "Max Health +10%"
 icon_alignment = 1
 expand_icon = true
 
@@ -444,7 +444,7 @@ offset_bottom = 143.0
 grow_vertical = 2
 theme = SubResource("Theme_3v2ag")
 theme_override_font_sizes/font_size = 30
-text = "Max Mana +10%"
+text = "Max Speed +10%"
 icon_alignment = 1
 expand_icon = true
 
