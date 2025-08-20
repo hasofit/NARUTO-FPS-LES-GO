@@ -19,7 +19,7 @@ height = 3.9884
 [node name="Test Dummy" type="RigidBody3D" groups=["Damagbele"]]
 collision_layer = 7
 collision_mask = 7
-sleeping = true
+lock_rotation = true
 script = ExtResource("1_p43bn")
 kunai = ExtResource("2_gionw")
 
@@ -37,5 +37,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00986129, 0.741112, 0.9610
 
 [node name="shooting_point" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78549, 4.42925)
+
+[node name="Lvl_Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.04462, 0)
+text = "LVL: 1"
+font_size = 200
+outline_size = 50
+
+[node name="Health_Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89985, 0)
+modulate = Color(1, 0, 0, 1)
+text = "0"
+font_size = 200
+outline_size = 50
 
 [connection signal="timeout" from="Change" to="." method="_on_change_timeout"]
